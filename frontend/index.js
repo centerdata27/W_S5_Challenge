@@ -46,7 +46,7 @@ console.log(mentors);
   //   email: "bob.johnson@example.com",
   //   mentors: [
   //     "Bill Gates",
-  //     "Grace Hopper"
+  //     "Grace Hopper" 
   //   ]`
   // }
 const newLearners= []
@@ -55,7 +55,7 @@ const newLearners= []
   const results1= {
     ...learner, 
     mentors: learner.mentors.map( mentorId => { 
-          const compt1 = mentors.find((person) => person.id === mentorId)
+          const compt1 = mentors.find((person) => person.id == mentorId)
         return compt1.firstName +' '+ compt1.lastName;
       
      })
@@ -84,14 +84,48 @@ const newLearners= []
     // ❗ Inspect the mock site closely to understand what the initial texts and classes look like!
 
     const card = document.createElement('div')
-    card.classList.add('card');
-    const heading = document.createElement('h3')
-    const email = document.createElement('div')
-    const mentorsHeading = document.createElement('h4')
-    const mentorsList = document.createElement('ul')
+    card.classList.add('card');  //add class for styling    addding to under cards
 
-      // Create the card container for the learner
-   
+    const heading = document.createElement('h3')
+    heading.classList.add('learner-name'); // Add a class to the learner name heading
+    heading.textContent = learner.fullName; 
+
+    const email = document.createElement('div')
+    email.classList.add('learner-email'); // Add a class for styling
+    email.textContent = learner.email; // Set the learner's email
+
+    const mentors = document.createElement('h4')
+ 
+    mentors.textContent = 'Mentors'; // Set the text to "Mentors"
+
+    const mentorsList = document.createElement('ul')
+    mentorsList.classList.add('mentors-list'); // Add a class for styling  
+
+  
+        // Loop over the learner's mentors and create an <li> for each one
+    
+learner.mentors.forEach(mentorName => {
+const li = document.createElement("li")
+li.textContent = mentorName
+mentorsList.appendChild(li)
+
+
+
+
+})
+       // Append all elements to the card
+       card.appendChild(heading);
+       card.appendChild(email);
+       card.appendChild(mentors);
+
+
+       mentors.classList.add("closed");
+     
+     
+ 
+    
+     
+
     
 
     // 👆 ==================== TASK 3 END ====================== 👆
